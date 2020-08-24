@@ -1,7 +1,7 @@
 package com.wujie.kotlinwanandroid.ui.knowledge
 
 import com.wujie.kotlinwanandroid.BasePresenter
-import com.wujie.kotlinwanandroid.bean.ProjectType
+import com.wujie.kotlinwanandroid.bean.Knowledge
 import com.wujie.kotlinwanandroid.net.BaseObserver
 import com.wujie.kotlinwanandroid.net.RxHelper
 import com.wujie.kotlinwanandroid.net.RxRetrofit
@@ -20,11 +20,11 @@ class KnowledgePresenter : BasePresenter<KnowledgeContact.View>(),KnowledgeConta
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .compose(RxHelper.handleResult2())
-            .subscribeWith(object :BaseObserver<MutableList<ProjectType>>(){
+            .subscribeWith(object :BaseObserver<MutableList<Knowledge>>(){
                 override fun start() {
                 }
 
-                override fun onSuccess(t: MutableList<ProjectType>) {
+                override fun onSuccess(t: MutableList<Knowledge>) {
                     mV!!.getKnowledgeSuccess(t)
                 }
 

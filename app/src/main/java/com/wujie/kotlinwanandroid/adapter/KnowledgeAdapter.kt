@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.wujie.kotlinwanandroid.R
-import com.wujie.kotlinwanandroid.bean.ProjectType
+import com.wujie.kotlinwanandroid.bean.Knowledge
 
 /**
  *  @Author：created by WuChen
  *  @Time：2020/8/24 13:27
  *  @Description：
  **/
-class KnowledgeAdapter(var dataList: MutableList<ProjectType>) :
+class KnowledgeAdapter(var dataList: MutableList<Knowledge>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view =

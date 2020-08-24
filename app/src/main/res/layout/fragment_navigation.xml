@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+
+    <LinearLayout
+        android:id="@+id/ll_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="导航"
-        android:textSize="25sp"
-        android:gravity="center"/>
+        android:orientation="horizontal">
 
-</LinearLayout>
+        <q.rorbin.verticaltablayout.VerticalTabLayout
+            android:id="@+id/vtl"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@color/deep_grey"
+            app:tab_height="50dp"
+            app:tab_mode="scrollable" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</FrameLayout>

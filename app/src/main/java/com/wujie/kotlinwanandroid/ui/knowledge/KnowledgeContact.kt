@@ -2,7 +2,7 @@ package com.wujie.kotlinwanandroid.ui.knowledge
 
 import com.wujie.kotlinwanandroid.IBaseView
 import com.wujie.kotlinwanandroid.IPresenter
-import com.wujie.kotlinwanandroid.bean.ProjectType
+import com.wujie.kotlinwanandroid.bean.Knowledge
 
 /**
  *  @Author：created by WuChen
@@ -12,7 +12,7 @@ import com.wujie.kotlinwanandroid.bean.ProjectType
 interface KnowledgeContact {
 
     interface View : IBaseView {
-        fun getKnowledgeSuccess(projectTypeList: MutableList<ProjectType>)
+        fun getKnowledgeSuccess(knowledgeList: MutableList<Knowledge>)
     }
 
     interface Presenter : IPresenter<View> {

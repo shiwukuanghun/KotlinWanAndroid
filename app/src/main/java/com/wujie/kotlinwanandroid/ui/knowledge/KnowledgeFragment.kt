@@ -1,14 +1,10 @@
 package com.wujie.kotlinwanandroid.ui.knowledge
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wujie.kotlinwanandroid.R
 import com.wujie.kotlinwanandroid.adapter.KnowledgeAdapter
-import com.wujie.kotlinwanandroid.bean.ProjectType
+import com.wujie.kotlinwanandroid.bean.Knowledge
 import com.wujie.kotlinwanandroid.ui.BaseFragment
 import kotlinx.android.synthetic.main.fragment_knowledge.view.*
 
@@ -19,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_knowledge.view.*
  **/
 class KnowledgeFragment : BaseFragment<KnowledgePresenter, KnowledgeContact.View>(), KnowledgeContact.View {
 
-    private lateinit var mDataList : MutableList<ProjectType>
+    private lateinit var mDataList : MutableList<Knowledge>
     private lateinit var mKnowledgeAdapter: KnowledgeAdapter
 
     override fun getLayoutId(): Int {
@@ -39,8 +35,8 @@ class KnowledgeFragment : BaseFragment<KnowledgePresenter, KnowledgeContact.View
         return KnowledgePresenter()
     }
 
-    override fun getKnowledgeSuccess(projectTypeList: MutableList<ProjectType>) {
-        mDataList.addAll(projectTypeList)
+    override fun getKnowledgeSuccess(knowledgeList: MutableList<Knowledge>) {
+        mDataList.addAll(knowledgeList)
         mKnowledgeAdapter.notifyDataSetChanged()
     }
 

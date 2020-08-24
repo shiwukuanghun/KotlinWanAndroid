@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.wujie.kotlinwanandroid.ui.*
 import com.wujie.kotlinwanandroid.ui.knowledge.KnowledgeFragment
+import com.wujie.kotlinwanandroid.ui.navigation.NavigationFragment
+import com.wujie.kotlinwanandroid.ui.project.ProjectFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
@@ -48,7 +50,8 @@ class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
             }
             R.id.rb_navigation -> {
                 if (mNavigationFragment == null) {
-                    mNavigationFragment = NavigationFragment()
+                    mNavigationFragment =
+                        NavigationFragment()
                     transaction.add(R.id.fl_container, mNavigationFragment!!, "2")
                 } else {
                     transaction.show(mNavigationFragment!!)
@@ -56,7 +59,8 @@ class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
             }
             R.id.rb_project -> {
                 if (mProjectFragment == null) {
-                    mProjectFragment = ProjectFragment()
+                    mProjectFragment =
+                        ProjectFragment()
                     transaction.add(R.id.fl_container, mProjectFragment!!, "3")
                 } else {
                     transaction.show(mProjectFragment!!)

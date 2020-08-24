@@ -2,7 +2,9 @@ package com.wujie.kotlinwanandroid.net
 
 import com.wujie.kotlinwanandroid.bean.BaseBean
 import io.reactivex.*
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Function
+import io.reactivex.schedulers.Schedulers
 import java.lang.Exception
 
 /**
@@ -24,12 +26,20 @@ class RxHelper {
                 });
     }*/
 
-    companion object{
+    companion object {
+
+        fun <T> rxSchedulerHelper(): ObservableTransformer<T, T> {
+            return ObservableTransformer<T, T> { upstream ->
+                upstream!!.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+            }
+        }
+
         //简化后的样子
-        fun <T> handleResult2() : ObservableTransformer<BaseBean<T>, T> {
+        fun <T> handleResult2(): ObservableTransformer<BaseBean<T>, T> {
             return ObservableTransformer<BaseBean<T>, T> { upstream ->
                 upstream!!.flatMap { t ->
-                    if (t!!.errorCode ==0 && t.data!=null) {
+                    if (t!!.errorCode == 0 && t.data != null) {
                         createData(t!!.data)
                     } else {
                         Observable.error(OtherException(t!!.errorCode, t!!.errorMsg))
@@ -39,12 +49,12 @@ class RxHelper {
         }
 
         //原样
-        fun <T> handleResult() : ObservableTransformer<BaseBean<T>, T> {
-            return object :ObservableTransformer<BaseBean<T>, T>{
+        fun <T> handleResult(): ObservableTransformer<BaseBean<T>, T> {
+            return object : ObservableTransformer<BaseBean<T>, T> {
                 override fun apply(upstream: Observable<BaseBean<T>>?): ObservableSource<T> {
-                    return upstream!!.flatMap(object : Function<BaseBean<T>, Observable<T>>{
+                    return upstream!!.flatMap(object : Function<BaseBean<T>, Observable<T>> {
                         override fun apply(t: BaseBean<T>?): Observable<T> {
-                            return if (t!!.errorCode ==0 && t.data!=null) {
+                            return if (t!!.errorCode == 0 && t.data != null) {
                                 createData(t!!.data)
                             } else {
                                 Observable.error(OtherException(t!!.errorCode, t!!.errorMsg))
@@ -56,24 +66,24 @@ class RxHelper {
         }
 
 
-        private fun <T> createData(t:T) : Observable<T> {
+        private fun <T> createData(t: T): Observable<T> {
             return Observable.create { e ->
                 try {
                     e?.onNext(t)
                     e?.onComplete()
-                }catch (e1:Exception) {
+                } catch (e1: Exception) {
                     e?.onError(e1)
                 }
             }
         }
 
-        private fun <T> createData2(t:T) : Observable<T> {
-            return Observable.create(object : ObservableOnSubscribe<T>{
+        private fun <T> createData2(t: T): Observable<T> {
+            return Observable.create(object : ObservableOnSubscribe<T> {
                 override fun subscribe(e: ObservableEmitter<T>?) {
                     try {
                         e?.onNext(t)
                         e?.onComplete()
-                    }catch (e1:Exception) {
+                    } catch (e1: Exception) {
                         e?.onError(e1)
                     }
                 }

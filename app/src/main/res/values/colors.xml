@@ -7,4 +7,7 @@
     <color name="transparent">#00000000</color>
     <color name="myTextColor">#5e6600</color>
     <color name="text_color">#1a1919</color>
+    <color name="deep_grey">#e6e6e6</color>
+    <color name="shallow_green">#FF36BC9B</color>
+    <color name="shallow_grey">#FF757575</color>
 </resources>
