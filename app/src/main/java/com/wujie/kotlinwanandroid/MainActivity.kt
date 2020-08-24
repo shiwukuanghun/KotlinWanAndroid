@@ -6,6 +6,7 @@ import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.wujie.kotlinwanandroid.ui.*
+import com.wujie.kotlinwanandroid.ui.knowledge.KnowledgeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
@@ -38,7 +39,8 @@ class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
             }
             R.id.rb_knowledge -> {
                 if (mKnowledgeFragment == null) {
-                    mKnowledgeFragment = KnowledgeFragment()
+                    mKnowledgeFragment =
+                        KnowledgeFragment()
                     transaction.add(R.id.fl_container, mKnowledgeFragment!!, "1")
                 } else {
                     transaction.show(mKnowledgeFragment!!)

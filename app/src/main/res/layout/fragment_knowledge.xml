@@ -3,11 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_knowledge"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="知识体系"
-        android:textSize="25sp"
-        android:gravity="center"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
